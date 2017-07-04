@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="bibliotekaModelStoreContainer" CdmEntityContainer="bibliotekaEntities">
+    <EntitySetMapping Name="czytelnik">
+      <EntityTypeMapping TypeName="bibliotekaModel.czytelnik">
+        <MappingFragment StoreEntitySet="czytelnik">
+          <ScalarProperty Name="id_czytelnik" ColumnName="id_czytelnik" />
+          <ScalarProperty Name="imie" ColumnName="imie" />
+          <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+          <ScalarProperty Name="adres" ColumnName="adres" />
+          <ScalarProperty Name="telefon" ColumnName="telefon" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ksiazka">
+      <EntityTypeMapping TypeName="bibliotekaModel.ksiazka">
+        <MappingFragment StoreEntitySet="ksiazka">
+          <ScalarProperty Name="liczba" ColumnName="liczba" />
+          <ScalarProperty Name="id_ksiazka" ColumnName="id_ksiazka" />
+          <ScalarProperty Name="isbn" ColumnName="isbn" />
+          <ScalarProperty Name="tytul" ColumnName="tytul" />
+          <ScalarProperty Name="autor" ColumnName="autor" />
+          <ScalarProperty Name="wydawnictwo" ColumnName="wydawnictwo" />
+          <ScalarProperty Name="opis" ColumnName="opis" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="zamowienie">
+      <EntityTypeMapping TypeName="bibliotekaModel.zamowienie">
+        <MappingFragment StoreEntitySet="zamowienie">
+          <ScalarProperty Name="oddany" ColumnName="oddany" />
+          <ScalarProperty Name="data_oczekiwana_zwrotu" ColumnName="data_oczekiwana_zwrotu" />
+          <ScalarProperty Name="data_wypozyczenia" ColumnName="data_wypozyczenia" />
+          <ScalarProperty Name="id_zamowienie" ColumnName="id_zamowienie" />
+          <ScalarProperty Name="id_czytelnik" ColumnName="id_czytelnik" />
+          <ScalarProperty Name="id_ksiazka" ColumnName="id_ksiazka" />
+          <ScalarProperty Name="data_zwrotu" ColumnName="data_zwrotu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

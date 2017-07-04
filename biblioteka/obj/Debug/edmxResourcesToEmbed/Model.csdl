@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bibliotekaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="czytelnik">
+    <Key>
+      <PropertyRef Name="id_czytelnik" />
+    </Key>
+    <Property Name="id_czytelnik" Type="Int32" Nullable="false" />
+    <Property Name="imie" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="nazwisko" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="adres" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ksiazka">
+    <Key>
+      <PropertyRef Name="id_ksiazka" />
+    </Key>
+    <Property Name="id_ksiazka" Type="Int32" Nullable="false" />
+    <Property Name="isbn" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tytul" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="autor" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="wydawnictwo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="liczba" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="zamowienie">
+    <Key>
+      <PropertyRef Name="id_zamowienie" />
+      <PropertyRef Name="id_czytelnik" />
+      <PropertyRef Name="id_ksiazka" />
+      <PropertyRef Name="oddany" />
+    </Key>
+    <Property Name="id_zamowienie" Type="Int32" Nullable="false" />
+    <Property Name="id_czytelnik" Type="Int32" Nullable="false" />
+    <Property Name="id_ksiazka" Type="Int32" Nullable="false" />
+    <Property Name="data_zwrotu" Type="DateTime" Precision="3" />
+    <Property Name="data_wypozyczenia" Type="DateTimeOffset" Nullable="false" Precision="3" />
+    <Property Name="data_oczekiwana_zwrotu" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="oddany" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="bibliotekaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="czytelnik" EntityType="Self.czytelnik" />
+    <EntitySet Name="ksiazka" EntityType="Self.ksiazka" />
+    <EntitySet Name="zamowienie" EntityType="Self.zamowienie" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bibliotekaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="czytelnik">
+    <Key>
+      <PropertyRef Name="id_czytelnik" />
+    </Key>
+    <Property Name="id_czytelnik" Type="int" Nullable="false" />
+    <Property Name="imie" Type="varchar" MaxLength="100" />
+    <Property Name="nazwisko" Type="varchar" MaxLength="100" />
+    <Property Name="adres" Type="varchar" MaxLength="200" />
+    <Property Name="telefon" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ksiazka">
+    <Key>
+      <PropertyRef Name="id_ksiazka" />
+    </Key>
+    <Property Name="id_ksiazka" Type="int" Nullable="false" />
+    <Property Name="isbn" Type="varchar" MaxLength="13" Nullable="false" />
+    <Property Name="tytul" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="autor" Type="varchar" MaxLength="70" Nullable="false" />
+    <Property Name="wydawnictwo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="opis" Type="text" />
+    <Property Name="liczba" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'biblioteka.dbo.zamowienie' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="zamowienie">
+    <Key>
+      <PropertyRef Name="id_zamowienie" />
+      <PropertyRef Name="id_czytelnik" />
+      <PropertyRef Name="id_ksiazka" />
+      <PropertyRef Name="oddany" />
+    </Key>
+    <Property Name="id_zamowienie" Type="int" Nullable="false" />
+    <Property Name="id_czytelnik" Type="int" Nullable="false" />
+    <Property Name="id_ksiazka" Type="int" Nullable="false" />
+    <Property Name="data_wypozyczenia" Type="datetime" Nullable="false" />
+    <Property Name="data_oczekiwana_zwrotu" Type="datetime" Nullable="false" />
+    <Property Name="data_zwrotu" Type="datetime" />
+    <Property Name="oddany" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="bibliotekaModelStoreContainer">
+    <EntitySet Name="czytelnik" EntityType="Self.czytelnik" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ksiazka" EntityType="Self.ksiazka" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="zamowienie" EntityType="Self.zamowienie" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [zamowienie].[id_zamowienie] AS [id_zamowienie], 
+    [zamowienie].[id_czytelnik] AS [id_czytelnik], 
+    [zamowienie].[id_ksiazka] AS [id_ksiazka], 
+    [zamowienie].[data_wypozyczenia] AS [data_wypozyczenia], 
+    [zamowienie].[data_oczekiwana_zwrotu] AS [data_oczekiwana_zwrotu], 
+    [zamowienie].[data_zwrotu] AS [data_zwrotu], 
+    [zamowienie].[oddany] AS [oddany]
+    FROM [dbo].[zamowienie] AS [zamowienie]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="bibliotekaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="czytelnik">
+          <Key>
+            <PropertyRef Name="id_czytelnik" />
+          </Key>
+          <Property Name="id_czytelnik" Type="int" Nullable="false" />
+          <Property Name="imie" Type="varchar" MaxLength="100" />
+          <Property Name="nazwisko" Type="varchar" MaxLength="100" />
+          <Property Name="adres" Type="varchar" MaxLength="200" />
+          <Property Name="telefon" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ksiazka">
+          <Key>
+            <PropertyRef Name="id_ksiazka" />
+          </Key>
+          <Property Name="id_ksiazka" Type="int" Nullable="false" />
+          <Property Name="isbn" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="tytul" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="autor" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="wydawnictwo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="opis" Type="text" />
+          <Property Name="liczba" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'biblioteka.dbo.zamowienie' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="zamowienie">
+          <Key>
+            <PropertyRef Name="id_zamowienie" />
+            <PropertyRef Name="id_czytelnik" />
+            <PropertyRef Name="id_ksiazka" />
+            
+            
+            <PropertyRef Name="oddany" />
+          </Key>
+          <Property Name="id_zamowienie" Type="int" Nullable="false" />
+          <Property Name="id_czytelnik" Type="int" Nullable="false" />
+          <Property Name="id_ksiazka" Type="int" Nullable="false" />
+          <Property Name="data_wypozyczenia" Type="datetime" Nullable="false" />
+          <Property Name="data_oczekiwana_zwrotu" Type="datetime" Nullable="false" />
+          <Property Name="data_zwrotu" Type="datetime" />
+          <Property Name="oddany" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="bibliotekaModelStoreContainer">
+          <EntitySet Name="czytelnik" EntityType="Self.czytelnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ksiazka" EntityType="Self.ksiazka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="zamowienie" EntityType="Self.zamowienie" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [zamowienie].[id_zamowienie] AS [id_zamowienie], 
+    [zamowienie].[id_czytelnik] AS [id_czytelnik], 
+    [zamowienie].[id_ksiazka] AS [id_ksiazka], 
+    [zamowienie].[data_wypozyczenia] AS [data_wypozyczenia], 
+    [zamowienie].[data_oczekiwana_zwrotu] AS [data_oczekiwana_zwrotu], 
+    [zamowienie].[data_zwrotu] AS [data_zwrotu], 
+    [zamowienie].[oddany] AS [oddany]
+    FROM [dbo].[zamowienie] AS [zamowienie]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bibliotekaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="czytelnik">
+          <Key>
+            <PropertyRef Name="id_czytelnik" />
+          </Key>
+          <Property Name="id_czytelnik" Type="Int32" Nullable="false" />
+          <Property Name="imie" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nazwisko" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="adres" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ksiazka">
+          <Key>
+            <PropertyRef Name="id_ksiazka" />
+          </Key>
+          <Property Name="id_ksiazka" Type="Int32" Nullable="false" />
+          <Property Name="isbn" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tytul" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="autor" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="wydawnictwo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="liczba" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="zamowienie">
+          <Key>
+            <PropertyRef Name="id_zamowienie" />
+            <PropertyRef Name="id_czytelnik" />
+            <PropertyRef Name="id_ksiazka" />
+            <PropertyRef Name="oddany" />
+          </Key>
+          <Property Name="id_zamowienie" Type="Int32" Nullable="false" />
+          <Property Name="id_czytelnik" Type="Int32" Nullable="false" />
+          <Property Name="id_ksiazka" Type="Int32" Nullable="false" />
+          <Property Name="data_zwrotu" Type="DateTime" Precision="3" />
+          <Property Name="data_wypozyczenia" Type="DateTimeOffset" Nullable="false" Precision="3" />
+          <Property Name="data_oczekiwana_zwrotu" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="oddany" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="bibliotekaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="czytelnik" EntityType="Self.czytelnik" />
+          <EntitySet Name="ksiazka" EntityType="Self.ksiazka" />
+          <EntitySet Name="zamowienie" EntityType="Self.zamowienie" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bibliotekaModelStoreContainer" CdmEntityContainer="bibliotekaEntities">
+          <EntitySetMapping Name="czytelnik">
+            <EntityTypeMapping TypeName="bibliotekaModel.czytelnik">
+              <MappingFragment StoreEntitySet="czytelnik">
+                <ScalarProperty Name="id_czytelnik" ColumnName="id_czytelnik" />
+                <ScalarProperty Name="imie" ColumnName="imie" />
+                <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ksiazka">
+            <EntityTypeMapping TypeName="bibliotekaModel.ksiazka">
+              <MappingFragment StoreEntitySet="ksiazka">
+                <ScalarProperty Name="liczba" ColumnName="liczba" />
+                <ScalarProperty Name="id_ksiazka" ColumnName="id_ksiazka" />
+                <ScalarProperty Name="isbn" ColumnName="isbn" />
+                <ScalarProperty Name="tytul" ColumnName="tytul" />
+                <ScalarProperty Name="autor" ColumnName="autor" />
+                <ScalarProperty Name="wydawnictwo" ColumnName="wydawnictwo" />
+                <ScalarProperty Name="opis" ColumnName="opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zamowienie">
+            <EntityTypeMapping TypeName="bibliotekaModel.zamowienie">
+              <MappingFragment StoreEntitySet="zamowienie">
+                <ScalarProperty Name="oddany" ColumnName="oddany" />
+                <ScalarProperty Name="data_oczekiwana_zwrotu" ColumnName="data_oczekiwana_zwrotu" />
+                <ScalarProperty Name="data_wypozyczenia" ColumnName="data_wypozyczenia" />
+                <ScalarProperty Name="id_zamowienie" ColumnName="id_zamowienie" />
+                <ScalarProperty Name="id_czytelnik" ColumnName="id_czytelnik" />
+                <ScalarProperty Name="id_ksiazka" ColumnName="id_ksiazka" />
+                <ScalarProperty Name="data_zwrotu" ColumnName="data_zwrotu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
