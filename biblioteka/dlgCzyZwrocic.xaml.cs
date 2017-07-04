@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace biblioteka
 {
     /// <summary>
-    /// Interaction logic for wypozyczenieNowe.xaml
+    /// Interaction logic for dlgCzyZwrocic.xaml
     /// </summary>
-    public partial class wypozyczenieNowe : Window
+    public partial class dlgCzyZwrocic : Window
     {
-        public wypozyczenieNowe()
+        public dlgCzyZwrocic()
         {
             InitializeComponent();
         }
@@ -27,7 +27,6 @@ namespace biblioteka
         private void button_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
-            return;
         }
     }
 }

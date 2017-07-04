@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Projekty\biblioteka\biblioteka\obj\Debug\
+D:\Projekty\Biblio\biblioteka\obj\Debug\
 biblioteka
 none
 false
 DEBUG;TRACE
-D:\Projekty\biblioteka\biblioteka\App.xaml
-2-1391496174
+D:\Projekty\Biblio\biblioteka\App.xaml
+250528329
 2-1881755278
-121339310687
-19614423498
-MainWindow.xaml;wypozyczenieNowe.xaml;
+12881450332
+19-17057921
+dlgCzyZwrocic.xaml;MainWindow.xaml;
 
 False
 

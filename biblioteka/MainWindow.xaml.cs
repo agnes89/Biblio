@@ -36,6 +36,9 @@ namespace biblioteka
             listBoxKsiazki.ItemsSource = ksiazkiKolekcja;
             listBoxCzytelnicy.ItemsSource = czytelnicyKolekcja;
             listBoxWypozyczenia.ItemsSource = zamowieniaKolekcja;
+            comboBoxCzytelnik.ItemsSource = czytelnicyKolekcja;
+            comboBoxKsiazka.ItemsSource = ksiazkiKolekcja;
+            groupBoxNoweWypozyczenie.IsEnabled = false;
           
             //ksiazkiKolekcja.Add(new ksiazka { tytul = "as", autor = "aaga" });
 
@@ -132,10 +135,7 @@ namespace biblioteka
                                     data_zwrotu = data,
                                     oddany = bool.Parse(zamowienieRow["oddany"].ToString()),
                                    
-                                    //czytelnik.imie = zamowienieRow["imie"].ToString(),
-                                    //nazwisko = zamowienieRow["nazwisko"].ToString(),
-                                    // tytul = zamowienieRow["tytul"].ToString(),
-                                    //autor = zamowienieRow["autor"].ToString(),
+                                 
 
                                 });
 
@@ -156,54 +156,91 @@ namespace biblioteka
 
         }
 
-        private void btDodaj_Click(object sender, RoutedEventArgs e)
-        {
-            ksiazkiKolekcja.Add(new ksiazka { });
-            listBoxKsiazki.SelectedIndex = ksiazkiKolekcja.Count - 1;
-        }
+        //private void btDodaj_Click(object sender, RoutedEventArgs e)
+        //{
+        //    ksiazkiKolekcja.Add(new ksiazka { });
+        //    listBoxKsiazki.SelectedIndex = ksiazkiKolekcja.Count - 1;
+        //}
 
-        private void btZapiszDaneDoBazy_Click(object sender, RoutedEventArgs e)
-        {
-            //procedura ??
+        //private void btZapiszDaneDoBazy_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //procedura ??
         
-        }
+        //}
 
-        private void btOddaj_Click(object sender, RoutedEventArgs e)
-        {
-            //kwestia wypozyczen historycznych
-
-
-          
-            //dodac daty
-            //nowy zamowienie sptro
-        }
+    
 
      
-        private void LadujCzytelnika(object sender, SelectionChangedEventArgs e)
+        private void LadujWypozyczenie(object sender, SelectionChangedEventArgs e)
         {
             string czytelnikString = "";
-            czytelnik nowy = new czytelnik();
-            nowy = listBoxWypozyczenia.SelectedItem as czytelnik;
+            string ksiazkaString = "";
+            zamowienie nowy = new zamowienie();
+            nowy = listBoxWypozyczenia.SelectedItem as zamowienie;
+
             foreach (var item in czytelnicyKolekcja)
             {
-                //if (item.id_czytelnik == tex)t
+                if (item.id_czytelnik == nowy.id_czytelnik)
                 {
-                    czytelnikString = nowy.imie + "" + nowy.nazwisko;
+                    czytelnikString = item.imie + " " + item.nazwisko;
                 }
-
             }
-
             textBoxCzytelnik.Text = czytelnikString;
+
+
+            foreach (var item in ksiazkiKolekcja)
+            {
+                if (item.id_ksiazka == nowy.id_ksiazka)
+                {
+                    ksiazkaString = item.autor + "\n" + item.tytul;
+                }
+            }
+            textBoxKsiazka.Text = ksiazkaString;
         }
 
-        private void Wypozycz(object sender, RoutedEventArgs e)
+    
+
+        private void buttonWypozycz_Click(object sender, RoutedEventArgs e)
         {
-            wypozyczenieNowe nowe = new wypozyczenieNowe();
-            if (nowe.ShowDialog()==true)
+            groupBoxNoweWypozyczenie.IsEnabled = true;
+            int liczbaWypozyczen = zamowieniaKolekcja.Count + 1;
+            textBoxIdNoweWyp.Text = liczbaWypozyczen.ToString();          
+            textBoxDataWypozyczenia.Text = DateTime.Today.ToString();
+            textBoxOczekDataZwrotu.Text = DateTime.Today.AddMonths(1).ToString();
+        }
+
+        private void buttonWypozyczKsiazke_Click(object sender, RoutedEventArgs e)
+        {
+            czytelnik nowy = new czytelnik();
+            nowy = comboBoxCzytelnik.SelectedItem as czytelnik;
+
+            ksiazka nowa = new ksiazka();
+            nowa = comboBoxKsiazka.SelectedItem as ksiazka;
+
+            zamowieniaKolekcja.Add(new zamowienie
             {
-                //textBoxCzytelnik.Text = "d";
-            }
+                id_zamowienie = int.Parse(textBoxIdNoweWyp.Text),
+                id_czytelnik = nowy.id_czytelnik,
+                id_ksiazka = nowa.id_ksiazka,
+                data_wypozyczenia = DateTime.Today,
+                data_oczekiwana_zwrotu = DateTime.Today.AddMonths(1),
+                oddany = false
+           });
+            groupBoxNoweWypozyczenie.IsEnabled = false;
             
+        }
+
+        private void buttonZwroc_Click(object sender, RoutedEventArgs e)
+        {
+            dlgCzyZwrocic okno = new dlgCzyZwrocic();
+            if (okno.ShowDialog() == false) return;           
+
+            
+            //zamowienie nowy = new zamowienie();
+           // nowy = listBoxWypozyczenia.SelectedItem as zamowienie;
+           // nowy.oddany =true;
+           // nowy.data_zwrotu = DateTime.Today;
+
         }
     }
 }

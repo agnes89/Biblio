@@ -1,0 +1,15 @@
+﻿<Window x:Class="biblioteka.dlgCzyZwrocic"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:biblioteka"
+        mc:Ignorable="d"
+        Title="Czy zwrócić?" Height="173.023" Width="300">
+    <Grid Margin="0,0,0,205">
+        <Label x:Name="label" Content="Czy na pewno zwrócić daną książkę?" HorizontalAlignment="Left" Height="30" Margin="27,28,0,-58" VerticalAlignment="Top" Width="224"/>
+        <Button x:Name="button" Content="Tak, zwróć" HorizontalAlignment="Left" Height="28" Margin="66,82,0,-110" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.286,-0.347" IsDefault="True" Click="button_Click"/>
+        <Button x:Name="button1" Content="Nie" HorizontalAlignment="Left" Height="25" Margin="153,85,0,-110" VerticalAlignment="Top" Width="81" IsCancel="True"/>
+
+    </Grid>
+</Window>

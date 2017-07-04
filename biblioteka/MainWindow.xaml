@@ -9,7 +9,6 @@
     <Window.Resources>
 
         <DataTemplate x:Key="SzablonElementu">
-
             <Grid Margin="3"  >
                 <Grid.ColumnDefinitions >
                     <ColumnDefinition ></ColumnDefinition>
@@ -17,12 +16,10 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock  Margin="2" Text="{Binding Path=tytul}"></TextBlock>
                 <TextBlock  Margin="2" Grid.Column="1" Text="{Binding Path=autor}"></TextBlock>
-
             </Grid>
-
         </DataTemplate>
+        
         <DataTemplate x:Key="SzablonElementu2">
-
             <Grid Margin="3"  >
                 <Grid.ColumnDefinitions >
                     <ColumnDefinition ></ColumnDefinition>
@@ -30,13 +27,10 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock  Margin="2" Text="{Binding Path=imie}"></TextBlock>
                 <TextBlock  Margin="2" Grid.Column="1" Text="{Binding Path=nazwisko}"></TextBlock>
-
             </Grid>
-
         </DataTemplate>
 
         <DataTemplate x:Key="SzablonElementu3">
-
             <Grid Margin="3"  >
                 <Grid.ColumnDefinitions >
                     <ColumnDefinition Width="20"></ColumnDefinition>
@@ -44,20 +38,21 @@
                     <ColumnDefinition Width="20" ></ColumnDefinition>
                     <ColumnDefinition Width="100"></ColumnDefinition>
                     <ColumnDefinition Width="100"></ColumnDefinition>
-
-
-                </Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"></ColumnDefinition>
+                    <ColumnDefinition Width="100"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
                 <TextBlock  Margin="2" Text="{Binding Path=id_zamowienie}"></TextBlock>
                 <TextBlock  Margin="2" Grid.Column="1" Text="{Binding Path=id_ksiazka}"></TextBlock>
-                <TextBlock x:Name="texBoxCzytelnik"  Margin="2" Grid.Column="2" Text="{Binding Path=id_czytelnik}" ></TextBlock>
+                <TextBlock  Margin="2" Grid.Column="2" Text="{Binding Path=id_czytelnik}" ></TextBlock>
                 <TextBlock  Margin="2" Grid.Column="3" Text="{Binding Path=data_wypozyczenia, StringFormat=dd-MM-yyyy}"></TextBlock>
-                <TextBlock  Margin="2" Grid.Column="4" Text="{Binding Path=data_zwrotu}"></TextBlock>
-
+                <TextBlock  Margin="2" Grid.Column="4" Text="{Binding Path=data_oczekiwana_zwrotu, StringFormat=dd-MM-yyyy}"></TextBlock>
+                <TextBlock  Margin="2" Grid.Column="5" Text="{Binding Path=data_zwrotu, StringFormat=dd-MM-yyyy}"></TextBlock>
+                <TextBlock  Margin="2" Grid.Column="6" Text="{Binding Path=oddany}"></TextBlock>
             </Grid>
-
         </DataTemplate>
-
     </Window.Resources>
+    
+    
     <Grid>
         <Grid.ColumnDefinitions>
 
@@ -76,19 +71,20 @@
                     <TextBox x:Name="textBoxWydawnictwo" TextWrapping="Wrap" Text="{Binding Path=wydawnictwo}" Margin="632,187,169,366"/>
                     <Label x:Name="label5" Content="Opis" Margin="514,238,410,313"/>
                     <TextBox x:Name="textBoxOpis" TextWrapping="Wrap" Text="{Binding Path=opis}" Margin="631,237,66,246"/>
-                    <Button x:Name="btDodaj" Content="Dodaj" HorizontalAlignment="Left" Margin="530,426,0,0" VerticalAlignment="Top" Width="75" Click="btDodaj_Click" />
-                    <Button x:Name="button1" Content="Usuń" HorizontalAlignment="Left" Margin="631,425,0,0" VerticalAlignment="Top" Width="75"/>
-                    <Button x:Name="button2" Content="Edytuj" HorizontalAlignment="Left" Margin="729,425,0,0" VerticalAlignment="Top" Width="75"/>
                     <Label x:Name="label6" Content="Liczba sztuk" HorizontalAlignment="Left" Margin="512,362,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="textBoxLiczba" TextWrapping="Wrap" Text="{Binding Path=liczba}" Margin="635,365,231,195"/>
-                    <Button x:Name="btZapiszDaneDoBazy" Content="Zapisz" HorizontalAlignment="Left" Margin="60,486,0,0" VerticalAlignment="Top" Width="139" RenderTransformOrigin="-0.44,2.409" Height="44" Click="btZapiszDaneDoBazy_Click"/>
+                    <Button x:Name="buttonDodajKsiazke" Content="Dodaj" HorizontalAlignment="Left" Margin="530,426,0,0" VerticalAlignment="Top" Width="75"  />
+                    <Button x:Name="buttonArchiwizujKsiazke" Content="Archiwizuj" HorizontalAlignment="Left" Margin="631,425,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="buttonEdytujKsiazke" Content="Edytuj" HorizontalAlignment="Left" Margin="729,425,0,0" VerticalAlignment="Top" Width="75"/>                    
+                    <Button x:Name="buttonZapiszDaneDoBazy" Content="Zapisz" HorizontalAlignment="Left" Margin="60,486,0,0" VerticalAlignment="Top" Width="139"  Height="44" />
                 </Grid>
             </TabItem>
+            
             <TabItem Header="Spis czytelników">
                 <Grid DataContext="{Binding ElementName=listBoxCzytelnicy, Path=SelectedItem}">
                     <ListBox x:Name="listBoxCzytelnicy" ItemTemplate="{StaticResource SzablonElementu2}" HorizontalAlignment="Left" Height="364" Margin="76,53,0,0" VerticalAlignment="Top" Width="334"/>
                     <Label x:Name="labe7" Content="Id czytelnika" Margin="520,66,371,490" Height="32"/>
-                    <TextBox x:Name="textBoxId" TextWrapping="Wrap" Text="{Binding Path=id_czytelnik}" Margin="632,68,155,488"/>
+                    <TextBox x:Name="textBoxIdCzytelnika" TextWrapping="Wrap" Text="{Binding Path=id_czytelnik}" Margin="632,68,155,488"/>
                     <Label x:Name="label8" Content="Imię"  Margin="517,111,409,445" Height="32"/>
                     <TextBox x:Name="textBoxImie" TextWrapping="Wrap" Text="{Binding Path=imie}" Margin="631,107,158,449"/>
                     <Label x:Name="label9" Content="Nazwisko" Margin="514,149,375,407" Height="32"/>
@@ -97,20 +93,34 @@
                     <TextBox x:Name="textBoxAdres" TextWrapping="Wrap" Text="{Binding Path=adres}" Margin="632,187,105,366"/>
                     <Label x:Name="label11" Content="Telefon" Margin="514,238,410,313"/>
                     <TextBox x:Name="textBoxTelefon" TextWrapping="Wrap"  Text="{Binding Path=telefon}"  Margin="631,237,165,321"/>
-
                     <Label x:Name="label12" Content="E-mail" HorizontalAlignment="Left" Margin="520,290,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="textBoxEmail" TextWrapping="Wrap" Text="{Binding Path=email}" Margin="637,287,165,273"/>
                 </Grid>
             </TabItem>
+            
+            
             <TabItem Header="Wypożyczenia" Height="23" VerticalAlignment="Top">
                 <Grid  Margin="-31,56,31,-56">
-                    <ListBox x:Name="listBoxWypozyczenia" ItemTemplate="{StaticResource SzablonElementu3}" HorizontalAlignment="Left" Height="249" Margin="66,-35,0,0" VerticalAlignment="Top" Width="368" SelectionChanged="LadujCzytelnika"/>
-                   <TextBox x:Name="textBoxCzytelnik" Margin="486,-28,265,584"  />
-                    
-                    <Button x:Name="btNoweWyp" Content="Nowe" HorizontalAlignment="Left" Margin="729,425,0,0" VerticalAlignment="Top" Width="75" Click="Wypozycz"/>
-                    <Button x:Name="btOddaj" Content="Oddaj" HorizontalAlignment="Left" Margin="729,455,0,0" VerticalAlignment="Top" Width="75" Click="btOddaj_Click"/>
+                    <ListBox x:Name="listBoxWypozyczenia" ItemTemplate="{StaticResource SzablonElementu3}" HorizontalAlignment="Left" Height="249" Margin="66,-35,0,0" VerticalAlignment="Top" Width="487" SelectionChanged="LadujWypozyczenie"/>
+                   <TextBox x:Name="textBoxCzytelnik" Margin="574,-23,177,579"  />
+                    <TextBox x:Name="textBoxKsiazka" Margin="573,30,51,449"  />
 
-                  
+
+
+                    <Button x:Name="buttonWypozycz" Content="Nowe" HorizontalAlignment="Left" Margin="85,241,0,0" VerticalAlignment="Top" Width="75" Click="buttonWypozycz_Click" />
+                    <Button x:Name="buttonZwroc" Content="Oddaj" HorizontalAlignment="Left" Margin="673,186,0,0" VerticalAlignment="Top" Width="75" Click="buttonZwroc_Click" />
+                    <GroupBox x:Name="groupBoxNoweWypozyczenie" Header="Nowe wypożyczenie" HorizontalAlignment="Left" Margin="69,278,0,0" VerticalAlignment="Top" Height="218" Width="840">
+                        <Grid >
+                        <TextBox x:Name="textBoxIdNoweWyp" HorizontalAlignment="Left" Height="23" Margin="81,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
+                            <ComboBox x:Name="comboBoxKsiazka" ItemTemplate="{StaticResource SzablonElementu}" HorizontalAlignment="Left" Margin="81,56,0,0" VerticalAlignment="Top" Width="708" Height="35" />
+                            <ComboBox x:Name="comboBoxCzytelnik" ItemTemplate="{StaticResource SzablonElementu2}" HorizontalAlignment="Left" Margin="82,101,0,0" VerticalAlignment="Top" Width="232"/>
+                        <TextBox x:Name="textBoxDataWypozyczenia" HorizontalAlignment="Left" Height="23" Margin="79,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
+                        <TextBox x:Name="textBoxOczekDataZwrotu" HorizontalAlignment="Left" Height="23" Margin="80,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
+                           <Button x:Name="buttonWypozyczKsiazke" Margin="639,151,102,19" Content="Wypożycz" Click="buttonWypozyczKsiazke_Click" /> 
+                        </Grid>
+                    </GroupBox>
+
+
                 </Grid>
             </TabItem>
          
