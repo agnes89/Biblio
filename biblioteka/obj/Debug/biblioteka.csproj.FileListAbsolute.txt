@@ -40,3 +40,24 @@ D:\Projekty\Biblio\biblioteka\obj\Debug\biblioteka.Properties.Resources.resource
 D:\Projekty\Biblio\biblioteka\obj\Debug\biblioteka.csproj.GenerateResource.Cache
 D:\Projekty\Biblio\biblioteka\obj\Debug\dlgCzyZwrocic.g.cs
 D:\Projekty\Biblio\biblioteka\obj\Debug\dlgCzyZwrocic.baml
+C:\Users\awawrzyniak\Projekty\inne\Nowy folder\biblioteka\bin\Debug\biblioteka.exe.config
+C:\Users\awawrzyniak\Projekty\inne\Nowy folder\biblioteka\obj\Debug\biblioteka.exe
+C:\Users\awawrzyniak\Projekty\inne\Nowy folder\biblioteka\obj\Debug\biblioteka.pdb
+C:\Users\awawrzyniak\Projekty\inne\Nowy folder\biblioteka\bin\Debug\biblioteka.exe
+C:\Users\awawrzyniak\Projekty\inne\Nowy folder\biblioteka\bin\Debug\biblioteka.pdb
+C:\Users\awawrzyniak\Projekty\inne\Nowy folder\biblioteka\bin\Debug\EntityFramework.dll
+C:\Users\awawrzyniak\Projekty\inne\Nowy folder\biblioteka\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\awawrzyniak\Projekty\inne\Nowy folder\biblioteka\bin\Debug\EntityFramework.xml
+C:\Users\awawrzyniak\Projekty\inne\Nowy folder\biblioteka\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\awawrzyniak\Projekty\inne\Nowy folder\biblioteka\obj\Debug\biblioteka.csprojResolveAssemblyReference.cache
+C:\Users\awawrzyniak\Projekty\inne\Nowy folder\biblioteka\obj\Debug\dlgCzyZwrocic.g.cs
+C:\Users\awawrzyniak\Projekty\inne\Nowy folder\biblioteka\obj\Debug\MainWindow.g.cs
+C:\Users\awawrzyniak\Projekty\inne\Nowy folder\biblioteka\obj\Debug\App.g.cs
+C:\Users\awawrzyniak\Projekty\inne\Nowy folder\biblioteka\obj\Debug\biblioteka_Content.g.cs
+C:\Users\awawrzyniak\Projekty\inne\Nowy folder\biblioteka\obj\Debug\biblioteka_MarkupCompile.cache
+C:\Users\awawrzyniak\Projekty\inne\Nowy folder\biblioteka\obj\Debug\biblioteka_MarkupCompile.lref
+C:\Users\awawrzyniak\Projekty\inne\Nowy folder\biblioteka\obj\Debug\dlgCzyZwrocic.baml
+C:\Users\awawrzyniak\Projekty\inne\Nowy folder\biblioteka\obj\Debug\MainWindow.baml
+C:\Users\awawrzyniak\Projekty\inne\Nowy folder\biblioteka\obj\Debug\biblioteka.g.resources
+C:\Users\awawrzyniak\Projekty\inne\Nowy folder\biblioteka\obj\Debug\biblioteka.Properties.Resources.resources
+C:\Users\awawrzyniak\Projekty\inne\Nowy folder\biblioteka\obj\Debug\biblioteka.csproj.GenerateResource.Cache

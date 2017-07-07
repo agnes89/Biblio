@@ -95,6 +95,9 @@
                     <TextBox x:Name="textBoxTelefon" TextWrapping="Wrap"  Text="{Binding Path=telefon}"  Margin="631,237,165,321"/>
                     <Label x:Name="label12" Content="E-mail" HorizontalAlignment="Left" Margin="520,290,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="textBoxEmail" TextWrapping="Wrap" Text="{Binding Path=email}" Margin="637,287,165,273"/>
+                    <Button x:Name="buttonDodajCzytelnika" Content="Dodaj" HorizontalAlignment="Left" Margin="530,426,0,0" VerticalAlignment="Top" Width="75"  />
+                    <Button x:Name="buttonArchiwizujKsiazke1" Content="Archiwizuj" HorizontalAlignment="Left" Margin="631,425,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="buttonEdytujKsiazke1" Content="Edytuj" HorizontalAlignment="Left" Margin="729,425,0,0" VerticalAlignment="Top" Width="75"/>
                 </Grid>
             </TabItem>
             

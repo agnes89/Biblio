@@ -150,7 +150,46 @@ namespace biblioteka
             catch (Exception)
             {
 
-                throw;
+                // throw;
+                zamowieniaKolekcja.Add(new zamowienie
+                {
+                    id_zamowienie = 1,
+                    id_czytelnik = 1,
+                    id_ksiazka = 2,
+                    data_wypozyczenia = DateTime.Parse("2017-05-05"),
+                    data_oczekiwana_zwrotu = DateTime.Parse("2017-06-05"),                    
+                    oddany = false,              
+
+                });
+
+                czytelnicyKolekcja.Add(new czytelnik
+                {
+                    id_czytelnik = 1,
+                    imie = "gg",
+                    nazwisko = "gg",
+                    adres = "gg",
+                    telefon = "gg",
+                    email = "gg",
+
+
+                });
+
+
+                ksiazkiKolekcja.Add(new ksiazka
+                {
+                    id_ksiazka = 1,
+                    isbn = "kk",
+                    tytul = "kk",
+                    autor = "kk",
+                    wydawnictwo = "kk",
+                    opis = "kk",
+                    liczba = 2,
+
+                });
+
+
+
+
             }
 
 
@@ -236,10 +275,10 @@ namespace biblioteka
             if (okno.ShowDialog() == false) return;           
 
             
-            //zamowienie nowy = new zamowienie();
-           // nowy = listBoxWypozyczenia.SelectedItem as zamowienie;
-           // nowy.oddany =true;
-           // nowy.data_zwrotu = DateTime.Today;
+            zamowienie oddaj = listBoxWypozyczenia.SelectedItem as zamowienie;
+            oddaj.oddany =true;
+            oddaj.data_zwrotu = DateTime.Today;
+            //zamowieniaKolekcja.re
 
         }
     }
