@@ -103,7 +103,7 @@
             
             
             <TabItem Header="Wypożyczenia" Height="23" VerticalAlignment="Top">
-                <Grid  Margin="-31,56,31,-56">
+                <Grid  Margin="-31,56,31,-56" DataContext="{Binding ElementName=listBoxWypozyczenia, Path=SelectedItem}">
                     <ListBox x:Name="listBoxWypozyczenia" ItemTemplate="{StaticResource SzablonElementu3}" HorizontalAlignment="Left" Height="249" Margin="66,-35,0,0" VerticalAlignment="Top" Width="487" SelectionChanged="LadujWypozyczenie"/>
                    <TextBox x:Name="textBoxCzytelnik" Margin="574,-23,177,579"  />
                     <TextBox x:Name="textBoxKsiazka" Margin="573,30,51,449"  />

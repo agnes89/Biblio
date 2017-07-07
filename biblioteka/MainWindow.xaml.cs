@@ -276,9 +276,16 @@ namespace biblioteka
 
             
             zamowienie oddaj = listBoxWypozyczenia.SelectedItem as zamowienie;
-            oddaj.oddany =true;
-            oddaj.data_zwrotu = DateTime.Today;
-            //zamowieniaKolekcja.re
+            foreach (var item in zamowieniaKolekcja)
+            {
+                if (item.id_zamowienie==oddaj.id_zamowienie)
+                {
+                    item.oddany = true;
+                    item.data_zwrotu = DateTime.Today;
+                }
+
+            }
+           
 
         }
     }
